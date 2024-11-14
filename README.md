@@ -82,6 +82,7 @@ docker build -t makuiyu/frontend-web:latest frontend/
 ## Kubernetes部署服务
 ```Shell
 kubectl apply -f deployment/mysql_deployment.yaml
+
 kubectl apply -f deployment/user_deployment.yaml
 kubectl apply -f deployment/order_deployment.yaml
 kubectl apply -f deployment/inventory_deployment.yaml
@@ -106,6 +107,7 @@ kubectl logs -f -l app=<app_name>
 ## 清理部署环境
 ```Shell
 kubectl delete -f deployment/mysql_deployment.yaml
+
 kubectl delete -f deployment/user_deployment.yaml
 kubectl delete -f deployment/order_deployment.yaml
 kubectl delete -f deployment/inventory_deployment.yaml

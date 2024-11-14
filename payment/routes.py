@@ -12,4 +12,4 @@ def process_payment():
     new_payment = Payment(order_id=data['order_id'], amount=data['amount'], status='Processing')
     db.session.add(new_payment)
     db.session.commit()
-    return jsonify({"message": "Payment initiated", "id": new_payment.id}), 201
+    return jsonify({'message': 'Payment initiated', 'id': new_payment.id}), 201
