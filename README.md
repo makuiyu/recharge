@@ -167,3 +167,15 @@ sleep 3
 kubectl get services
 kubectl get pods
 ```
+
+## order.sh
+```Shell
+kubectl delete -f deployment/order_deployment.yaml
+sleep 3
+docker rmi makuiyu/order-service:latest
+docker build -t makuiyu/order-service:latest order/
+kubectl apply -f deployment/order_deployment.yaml
+sleep 3
+kubectl get services
+kubectl get pods
+```

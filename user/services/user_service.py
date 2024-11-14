@@ -15,7 +15,7 @@ def get_users():
 
 
 def get_user(user_id):
-    logger.info('Getting user with id: %s', user_id)
+    logger.info(f'Getting user with id: {user_id}')
     user = User.query.get_or_404(user_id)
     result = {'id': user.id, 'name': user.name, 'email': user.email}
     return jsonify(result), 200
@@ -35,7 +35,7 @@ def add_user(data):
 
 
 def update_user(user_id, data):
-    logger.info('Updating user with id: %s', user_id)
+    logger.info(f'Updating user with id: {user_id}')
     user = User.query.get_or_404(user_id)
     user.name = data.get('name', user.name)
     user.email = data.get('email', user.email)
@@ -45,7 +45,7 @@ def update_user(user_id, data):
 
 
 def delete_user(user_id):
-    logger.info('Deleting user with id: %s', user_id)
+    logger.info(f'Deleting user with id: {user_id}')
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
     db.session.commit()

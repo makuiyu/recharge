@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function loadOrders() {
-        axios.get(`http://${API_BASE_URL}/${ORDER_BASE_URL}/api/orders`)
+        axios.get(`http://${API_BASE_URL}/api/${ORDER_BASE_URL}/orders`)
             .then(response => {
                 const orders = response.data;
                 let orderList = '<h3>Order List</h3><ul class="list-group">';

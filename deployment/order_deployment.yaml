@@ -21,6 +21,20 @@ spec:
         env:
         - name: FLASK_ENV
           value: "production"
+        - name: MYSQL_DIALECT
+          value: "mysql"
+        - name: MYSQL_DRITVER
+          value: "pymysql"
+        - name: MYSQL_HOST
+          value: "mysql"
+        - name: MYSQL_PORT
+          value: "3306"
+        - name: MYSQL_USERNAME
+          value: "root"
+        - name: MYSQL_PASSWORD
+          value: "makuiyu"
+        - name: MYSQL_DBNAME
+          value: "recharge_db"
 ---
 apiVersion: v1
 kind: Service

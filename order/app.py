@@ -1,18 +1,30 @@
 
+import config
+
 from flask import Flask
-from routes import order_routes
-from models import init_db
+
+from models.order_model import init_db
+from routes.order_route import order_bp
+
+from loguru import logger
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:makuiyu@db/recharge_db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+app.config.from_object(config)
+for key, value in app.config.items():
+    logger.info(f'config {key}: {value}')
 
 init_db(app)
 
+app.register_blueprint(order_bp)
 
-app.register_blueprint(order_routes)
+
+with app.app_context():
+    # 获取路由列表
+    routes = []
+    for rule in app.url_map.iter_rules():
+        if rule.endpoint != 'static':
+            logger.info(rule)
 
 
 if __name__ == '__main__':
