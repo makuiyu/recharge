@@ -15,11 +15,37 @@ document.addEventListener('DOMContentLoaded', function () {
         axios.get(`http://${API_BASE_URL}/api/${USER_BASE_URL}/users`)
             .then(response => {
                 const users = response.data;
-                let userList = '<h3>User List</h3><ul class="list-group">';
+                // let userList = '<h3>User List</h3><ul class="list-group">';
+                // users.forEach(user => {
+                //     userList += `<li class="list-group-item">${user.name} (${user.email})</li>`;
+                // });
+                // userList += '</ul>';
+                let userList = '<h3>User List</h3>';
+                userList += '<table class="table table-striped">';
+                userList += '<thead>';
+                userList += '<tr>';
+                userList += '<th>#</th>';
+                userList += '<th>Name</th>';
+                userList += '<th>Email</th>';
+                userList += '<th>Actions</th>';
+                userList += '</tr>';
+                userList += '</thead>';
+                userList += '<tbody>';
                 users.forEach(user => {
-                    userList += `<li class="list-group-item">${user.name} (${user.email})</li>`;
+                    userList += `<tr class="align-middle">`;
+                    userList += `<td>${user.id}</td>`;
+                    userList += `<td>${user.name}</td>`;
+                    userList += `<td>${user.email}</td>`;
+                    userList += `<td>`;
+                    userList += `<button class="btn btn-warning btn-sm">Edit</button>`;
+                    userList += `<button class="btn btn-danger btn-sm ms-2">Delete</button>`;
+                    userList += `</td>`;
+                    userList += `</tr>`;
                 });
-                userList += '</ul>';
+                userList += '</tbody>';
+                userList += '</tr>';
+                userList += '</thead>';
+                userList += '</table>';
                 mainContent.innerHTML = userList;
             })
             .catch(error => {
@@ -31,11 +57,39 @@ document.addEventListener('DOMContentLoaded', function () {
         axios.get(`http://${API_BASE_URL}/api/${ORDER_BASE_URL}/orders`)
             .then(response => {
                 const orders = response.data;
-                let orderList = '<h3>Order List</h3><ul class="list-group">';
+                // let orderList = '<h3>Order List</h3><ul class="list-group">';
+                // orders.forEach(order => {
+                //     orderList += `<li class="list-group-item">Order ID: ${order.id}, User ID: ${order.user_id}, Status: ${order.status}</li>`;
+                // });
+                // orderList += '</ul>';
+                let orderList = '<h3>Order List</h3>';
+                orderList += '<table class="table table-striped">';
+                orderList += '<thead>';
+                orderList += '<tr>';
+                orderList += '<th>#</th>';
+                orderList += '<th>Order ID</th>';
+                orderList += '<th>User ID</th>';
+                orderList += '<th>Status</th>';
+                orderList += '<th>Actions</th>';
+                orderList += '</tr>';
+                orderList += '</thead>';
+                orderList += '<tbody>';
                 orders.forEach(order => {
-                    orderList += `<li class="list-group-item">Order ID: ${order.id}, User ID: ${order.user_id}, Status: ${order.status}</li>`;
+                    orderList += `<tr class="align-middle">`;
+                    orderList += `<td>${order.id}</td>`;
+                    orderList += `<td>${order.id}</td>`;
+                    orderList += `<td>${order.user_id}</td>`;
+                    orderList += `<td>${order.status}</td>`;
+                    orderList += `<td>`;
+                    orderList += `<button class="btn btn-warning btn-sm">Edit</button>`;
+                    orderList += `<button class="btn btn-danger btn-sm ms-2">Delete</button>`;
+                    orderList += `</td>`;
+                    orderList += `</tr>`;
                 });
-                orderList += '</ul>';
+                orderList += '</tbody>';
+                orderList += '</tr>';
+                orderList += '</thead>';
+                orderList += '</table>';
                 mainContent.innerHTML = orderList;
             })
             .catch(error => {
